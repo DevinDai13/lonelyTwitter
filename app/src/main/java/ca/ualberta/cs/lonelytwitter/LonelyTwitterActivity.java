@@ -37,10 +37,25 @@ public class LonelyTwitterActivity extends Activity {
 		saveButton.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View v) {
-				setResult(RESULT_OK);
+				//setResult(RESULT_OK);
 				String text = bodyText.getText().toString();
+
+				// adapter.notifyDataSetChange() --> saves the changed data, adapter is not defined rn cuz it should be in the other method
+				// my code to make new objects based on my classes
+
+				// creating two mood objects based on my non abstract class
+				Angry moodAngry = new Angry("Angry");
+				Scared moodScared = new Scared("Scared");
+
+				// add a mood array list for each tweet
+				ArrayList<CurrentMood> moodList = new ArrayList<CurrentMood>();
+				moodList.add(moodAngry);
+				moodList.add(moodScared);
+
+
+				// when you show the text you should also show the time
 				saveInFile(text, new Date(System.currentTimeMillis()));
-				finish();
+				//finish();
 
 			}
 		});
@@ -50,7 +65,7 @@ public class LonelyTwitterActivity extends Activity {
 	protected void onStart() {
 		// TODO Auto-generated method stub
 		super.onStart();
-		String[] tweets = loadFromFile();
+		String[] tweets = loadFromFile(); // list that holds everything that gets returned
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
 				R.layout.list_item, tweets);
 		oldTweetsList.setAdapter(adapter);
@@ -67,6 +82,8 @@ public class LonelyTwitterActivity extends Activity {
 				line = in.readLine();
 			}
 
+		// try .... catch when you have runtime error like dividing bym zero
+		// something goes wrong in the try you catch it in catch
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -93,3 +110,5 @@ public class LonelyTwitterActivity extends Activity {
 		}
 	}
 }
+
+
