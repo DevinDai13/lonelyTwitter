@@ -2,47 +2,50 @@ package ca.ualberta.cs.lonelytwitter;
 
 import java.util.Date;
 
-public abstract class Tweet {
-    private String message;
+public abstract class Tweet implements Tweetable {
+
     private Date date;
+    private String message;
+    private static final Integer MAX_CHARS = 140;
 
-
-    public Tweet(String message){
-        this.message = message;
+    //Empty argument constructor with default values
+    Tweet() {
+        //Must use the 'this' keyword in order to specify the current object message = message does nothing!
         this.date = new Date();
+        this.message = "I am default message schwa!";
     }
 
-    public Tweet(String message, Date date){
-        this.message = message;
-        this.date = date;
-    }
-
-
-    // mood setter
-    public void setMessage(String message) throws TooLongTweetException{
-        if (message.length() > 140){
-            throw new TooLongTweetException();
-        }
+    //Overloading: so that we can specify the tweet content
+    Tweet(String message) {
+        this.date = new Date();
         this.message = message;
     }
 
-    // mood getter
-    public String getMessage(){
+    public String getMessage() {
+
         return this.message;
     }
 
-    // date setter
-    public void setDate(Date date){
-        this.date = date;
+
+    public void setMessage(String message) throws TooLongTweetException {
+        if (message.length() <= this.MAX_CHARS) {
+            this.message = message;
+        } else {
+            throw new TooLongTweetException();
+        }
     }
 
-    // date getter
-    public Date getDate(){
+    public Date getDate() {
         return this.date;
     }
 
-    // this is like the moodkind string that returns string
+
+    @Override
+    public String toString(){
+        return date.toString() + " | " + message;
+    }
+
+
+    //No method body implemented! We leave that up to the subclasses (they MUST implement it)
     public abstract Boolean isImportant();
-
-
 }
