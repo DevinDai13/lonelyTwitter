@@ -1,5 +1,17 @@
 package ca.ualberta.cs.lonelytwitter;
 
+/*
+ * Tweet Class
+ * Lab 4 version
+ *
+ * 05/10/2018
+ *
+ */
+
+/*
+ * Tweet class holds the various setters and getters for various attributes of a particular tweet
+ * It is an abstract class that implements the interface Tweetable
+ */
 import java.util.Date;
 
 public abstract class Tweet implements Tweetable {
@@ -21,12 +33,13 @@ public abstract class Tweet implements Tweetable {
         this.message = message;
     }
 
+    // returns the message associated with a particular tweet
     public String getMessage() {
 
         return this.message;
     }
 
-
+    // set the message associated with a tweet and also error check the length
     public void setMessage(String message) throws TooLongTweetException {
         if (message.length() <= this.MAX_CHARS) {
             this.message = message;
@@ -35,11 +48,12 @@ public abstract class Tweet implements Tweetable {
         }
     }
 
+    // returns the date of a tweet
     public Date getDate() {
         return this.date;
     }
 
-
+    // returns the diaplay of a tweet
     @Override
     public String toString(){
         return date.toString() + " | " + message;

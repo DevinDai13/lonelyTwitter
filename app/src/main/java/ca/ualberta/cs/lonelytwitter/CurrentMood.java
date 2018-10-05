@@ -1,5 +1,18 @@
 package ca.ualberta.cs.lonelytwitter;
 
+/*
+ * CurrentMood Class
+ * Lab 4 version
+ *
+ * 05/10/2018
+ *
+ */
+
+/*
+ * Tweet class holds the various setters and getters for various attributes of a particular tweet
+ * It is an abstract class that implements the interface Tweetable
+ */
+
 import java.util.Date;
 
 public abstract class CurrentMood {

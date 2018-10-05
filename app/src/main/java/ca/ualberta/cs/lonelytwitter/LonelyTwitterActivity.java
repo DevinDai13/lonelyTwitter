@@ -1,5 +1,17 @@
 package ca.ualberta.cs.lonelytwitter;
 
+/*
+ * LonelyTwitterActivity class
+ * Lab 4 version
+ * 05/10/2018
+ */
+/*
+ * This class is for controlling the main page that the user sees
+ * It has control over the button clicks, listvew displays and the
+ * saving and loading of the data from the list view
+ */
+
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileInputStream;
@@ -29,6 +41,7 @@ import static android.util.JsonToken.NULL;
 
 public class LonelyTwitterActivity extends Activity {
 
+	// Initialize all variables used in the class
 	private static final String FILENAME = "file.sav";
 	private EditText bodyText;
 	private ListView oldTweetsList;
@@ -88,6 +101,7 @@ public class LonelyTwitterActivity extends Activity {
 	}
 
 
+	// loads the data from the file
 	@Override
 	protected void onStart() {
 		// TODO Auto-generated method stub
@@ -97,6 +111,7 @@ public class LonelyTwitterActivity extends Activity {
 		oldTweetsList.setAdapter(adapter);
 	}
 
+	// loads the data form the file
 	private void loadFromFile() {
 		try {
 			FileInputStream fis = openFileInput(FILENAME);
@@ -115,6 +130,7 @@ public class LonelyTwitterActivity extends Activity {
 		}
 	}
 
+	// save the data to the file
 	private void saveInFile() {
 		try {
 			FileOutputStream fos = openFileOutput(FILENAME,
