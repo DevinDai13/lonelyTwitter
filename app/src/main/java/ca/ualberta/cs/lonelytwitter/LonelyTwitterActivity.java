@@ -64,8 +64,7 @@ public class LonelyTwitterActivity extends Activity {
 			public void onClick(View v) {
 				setResult(RESULT_OK);
 				String searchTerm = bodyText.getText().toString();
-				ElasticsearchTweetController.GetTweetsTask getTweetsTask =
-						new ElasticsearchTweetController.GetTweetsTask();
+				ElasticsearchTweetController.GetTweetsTask getTweetsTask = new ElasticsearchTweetController.GetTweetsTask();
 				try {
 					tweetList = getTweetsTask.execute(searchTerm).get();
 				} catch (InterruptedException e) {

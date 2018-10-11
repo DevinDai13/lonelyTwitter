@@ -56,7 +56,7 @@ public class ElasticsearchTweetController {
 
             ArrayList<Tweet> tweets = new ArrayList<Tweet>();
 
-                // TODO Build the query
+            // TODO Build the query
 
             Search search = new Search.Builder(search_parameters[0])
                     .addIndex(search_parameters[0])
