@@ -80,7 +80,7 @@ public class ElasticsearchTweetController {
             return tweets;
         }
     }
-    
+
     public static void setClient() {
         if (client == null) {
             DroidClientConfig.Builder builder = new DroidClientConfig.Builder("http://cmput301.softwareprocess.es:8080");
